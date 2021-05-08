@@ -1,13 +1,12 @@
-import {Stack, StackDivider, Input, Icon} from "@chakra-ui/react";
+import {HStack, StackDivider, Input, Icon} from "@chakra-ui/react";
 import React from "react";
 import {AiOutlineSearch} from "react-icons/ai";
 
 const Search = () => (
-  <Stack
+  <HStack
     alignItems="center"
     bgColor="white"
     boxShadow="sm"
-    direction="row"
     divider={<StackDivider />}
     flex={1}
     id="search-bar"
@@ -25,7 +24,7 @@ const Search = () => (
       variant="unstyled"
     />
     <Icon as={AiOutlineSearch} color="gray.400" height={5} width={5} />
-  </Stack>
+  </HStack>
 );
 
 export default Search;
