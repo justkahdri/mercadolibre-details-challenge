@@ -1,11 +1,12 @@
 import React from "react";
-import {Container, Stack, HStack, Flex, Box, Image} from "@chakra-ui/react";
+import {Container, Stack, HStack, Box, Image} from "@chakra-ui/react";
 
 import logo from "../../../assets/logo.png";
 import Search from "../atoms/Search";
 import Point from "../atoms/Point";
 import Location from "../atoms/Location";
 import NavBar from "../atoms/NavBar";
+import UserUtils from "../atoms/UserUtils";
 
 const Header = () => (
   <Box bg="primary.500" boxShadow="sm" py={2}>
@@ -18,9 +19,13 @@ const Header = () => (
           </HStack>
           <Point display={{base: "none", lg: "flex"}} />
         </HStack>
-        <HStack alignItems="baseline" direction="row">
+        <HStack alignItems="baseline" spacing={12}>
+          {/* <HStack flex={1} height="100%" spacing={12}> */}
           <Location />
-          <NavBar />
+          <NavBar flex={1} />
+          {/* </HStack> */}
+
+          <UserUtils />
         </HStack>
       </Stack>
     </Container>

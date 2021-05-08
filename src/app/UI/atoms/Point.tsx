@@ -6,7 +6,7 @@ const Point = (props: StackProps) => (
   <HStack alignItems="center" color="grey.300" {...props}>
     <Icon as={FiPrinter} height={8} width={8} />
     <Text fontSize="lg" fontWeight={400}>
-      Comprá tu Point a $189
+      Comprá tu Point y QR a $189
     </Text>
   </HStack>
 );
