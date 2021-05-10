@@ -2,11 +2,12 @@ import React from "react";
 import {Container, Stack, HStack, Box, Image} from "@chakra-ui/react";
 
 import logo from "../../../assets/logo.png";
-import Search from "../atoms/Search";
-import Point from "../atoms/Point";
-import Location from "../atoms/Location";
-import NavBar from "../atoms/NavBar";
-import UserUtils from "../atoms/UserUtils";
+
+import Search from "./Search";
+import Point from "./Point";
+import Location from "./Location";
+import NavBar from "./NavBar";
+import UserUtils from "./UserUtils";
 
 const Header = () => (
   <Box bg="primary.500" boxShadow="sm" py={2}>

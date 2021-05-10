@@ -2,11 +2,11 @@ import React from "react";
 import {Container, Stack} from "@chakra-ui/react";
 
 import Routes from "./routes";
-import Header from "./UI/organisms/Header";
+import Header from "./components/Header";
 
 const App: React.FC = () => {
   return (
-    <Stack>
+    <Stack bgColor="blackAlpha.200">
       <Header />
       <Container alignSelf="center" maxWidth="container.xl" paddingX={0}>
         <Routes />
