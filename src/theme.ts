@@ -74,6 +74,17 @@ export default extendTheme({
             backgroundColor: `${colorScheme}.100`,
           },
         }),
+        minimal: ({colorScheme = "blue"}) => ({
+          boxSizing: "border-box",
+          overflow: "hidden",
+          ":focus": {
+            borderColor: `${colorScheme}.500`,
+            borderWidth: 2,
+            borderCollapse: "collapse",
+            // boxShadow: `0 0 0 2pt #4CACFB`,
+            boxShadow: "none",
+          },
+        }),
       },
     },
     Input: {

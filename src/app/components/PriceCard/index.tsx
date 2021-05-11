@@ -1,17 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Badge,
-  Text,
-  Icon,
-  Stack,
-  HStack,
-  StackDivider,
-  Heading,
-  Button,
-} from "@chakra-ui/react";
-import {AiFillStar, AiOutlineStar} from "react-icons/ai";
-import {FiHeart} from "react-icons/fi";
+import {Text, Icon, Stack, HStack, Button} from "@chakra-ui/react";
 import {FaShippingFast} from "react-icons/fa";
 import {IoReturnDownBackOutline} from "react-icons/io5";
 import {HiOutlineShieldCheck} from "react-icons/hi";
@@ -19,46 +7,22 @@ import {BiTrophy} from "react-icons/bi";
 
 import {Product} from "../../../product/types";
 
+import ProductTitle from "./ProductTitle";
+import Condition from "./Condition";
+import Stars from "./Stars";
+
 const PriceCard: React.FC<Product> = (props) => {
   const stock = props.initial_quantity - props.sold_quantity;
   // const stock = props.initial_quantity - 73;
 
   return (
-    <Stack borderRadius="lg" borderWidth="1px" px={4} py={6} spacing={5}>
-      {/* HEADING */}
+    <Stack borderRadius="lg" borderWidth={1} px={4} py={6} spacing={5}>
       <Stack id="heading">
-        <HStack color="blackAlpha.700" divider={<StackDivider />} fontSize="smaller">
-          <Text>{props.condition === "new" ? "Nuevo" : "Usado"}</Text>
-          <Text>{props.sold_quantity} vendidos</Text>
-        </HStack>
-
-        <HStack alignItems="flex-start" justifyContent="space-between" spacing={6}>
-          <Heading as="h1" fontSize="2xl">
-            {props.title}
-          </Heading>
-          <Icon as={FiHeart} color="blue.500" height={6} width={6} />
-        </HStack>
-
-        <HStack>
-          <Box d="flex">
-            {Array(5)
-              .fill("")
-              .map((_, i) =>
-                i < 4 ? (
-                  <Icon key={i} as={AiFillStar} color="blue.500" />
-                ) : (
-                  <Icon key={i} as={AiOutlineStar} color="gray.300" />
-                ),
-              )}{" "}
-          </Box>
-          {console.log(props)}
-          <Text color="blackAlpha.700" fontSize="sm">
-            5 opiniones
-          </Text>
-        </HStack>
+        <Condition condition={props.condition} sold_quantity={props.sold_quantity} />
+        <ProductTitle title={props.title} />
+        <Stars />
       </Stack>
 
-      {/* PRICE */}
       <Stack id="price" lineHeight="normal" spacing={0}>
         <Text fontSize="4xl" fontWeight={200}>
           {props.currency_id === "ARS" ? "$" : "USD"} {props.price}
@@ -69,7 +33,6 @@ const PriceCard: React.FC<Product> = (props) => {
         </Text>
       </Stack>
 
-      {/* SHIPPING */}
       {props.shipping.free_shipping ? (
         <Stack color="blackAlpha.600" fontSize="sm" id="shipping" lineHeight="100%">
           <HStack alignItems="center">
@@ -77,7 +40,7 @@ const PriceCard: React.FC<Product> = (props) => {
             <Text color="green.400" fontSize="md">
               Llega gratis{" "}
               <Text as="span" fontWeight={500}>
-                mañana
+                {new Date().getHours() < 13 ? "hoy" : "mañana"}
               </Text>
             </Text>
           </HStack>
@@ -92,7 +55,6 @@ const PriceCard: React.FC<Product> = (props) => {
         <Text color="blackAlpha.600">Envío pago</Text>
       )}
 
-      {/* REFUND */}
       <Stack color="blackAlpha.600" fontSize="sm" id="refund" lineHeight="100%">
         <HStack alignItems="center">
           <Icon as={IoReturnDownBackOutline} color="green.400" height={6} width={5} />
@@ -107,14 +69,12 @@ const PriceCard: React.FC<Product> = (props) => {
         </Text>
       </Stack>
 
-      {/* STOCK */}
       {stock < 5 && (
         <Text fontSize="lg" fontWeight={500} id="stock">
           {stock == 1 ? "¡Última disponible!" : `¡Últimos ${stock} disponibles!`}{" "}
         </Text>
       )}
 
-      {/* CTA */}
       <Stack id="CTA">
         <Button colorScheme="secondary" size="lg" variant="solid">
           {props.buying_mode == "buy_it_now" ? "Comprar ahora" : "Comprar"}
@@ -124,7 +84,6 @@ const PriceCard: React.FC<Product> = (props) => {
         </Button>
       </Stack>
 
-      {/* BADGES */}
       <Stack
         alignItems="flex-start"
         color="blackAlpha.600"
