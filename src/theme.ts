@@ -75,13 +75,9 @@ export default extendTheme({
           },
         }),
         minimal: ({colorScheme = "blue"}) => ({
-          boxSizing: "border-box",
-          overflow: "hidden",
+          outlineStyle: `auto`,
+          outlineColor: `${colorScheme}.500`,
           ":focus": {
-            borderColor: `${colorScheme}.500`,
-            borderWidth: 2,
-            borderCollapse: "collapse",
-            // boxShadow: `0 0 0 2pt #4CACFB`,
             boxShadow: "none",
           },
         }),

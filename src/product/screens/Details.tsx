@@ -14,8 +14,16 @@ interface Props {
 const DetailsScreen: React.FC<Props> = ({product = mock.product}) => {
   return (
     <div id="details-container">
-      <HStack bgColor="white" mt={2} p={4} rounded="md" shadow="md" width="100%">
-        <Stack alignSelf="flex-start" flex={2}>
+      <HStack
+        alignItems="flex-start"
+        bgColor="white"
+        mt={2}
+        p={4}
+        rounded="md"
+        shadow="md"
+        width="100%"
+      >
+        <Stack flex={2}>
           <Previews pictures={product.pictures} />
           <Stack alignSelf="center" divider={<StackDivider />} spacing={10} width="90%">
             <StackDivider />

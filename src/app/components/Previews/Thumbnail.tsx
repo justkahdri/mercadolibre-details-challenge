@@ -6,17 +6,17 @@ import {ProductPicture} from "../../../product/types";
 type ThumbnailProps = {
   handleClick: (pic: ProductPicture) => void;
   picture: ProductPicture;
+  active: string;
 };
 
-// TODO Fix unselect when loosing focus
-const Thumbnail = ({handleClick, picture}: ThumbnailProps) => (
+const Thumbnail = ({handleClick, picture, active}: ThumbnailProps) => (
   <Button
     borderColor="blackAlpha.200"
     borderWidth={1}
     colorScheme="secondary"
     height="50px"
     p={0.5}
-    variant="minimal"
+    variant={active === picture.id ? "minimal" : "unstyled"}
     width="50px"
     onClick={() => handleClick(picture)}
   >
