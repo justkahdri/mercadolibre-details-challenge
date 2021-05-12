@@ -5,7 +5,7 @@ import {IoReturnDownBackOutline} from "react-icons/io5";
 import {HiOutlineShieldCheck} from "react-icons/hi";
 import {BiTrophy} from "react-icons/bi";
 
-import {Product} from "../../../product/types";
+import {Product, Review} from "../../../product/types";
 
 import ProductTitle from "./ProductTitle";
 import Condition from "./Condition";
@@ -15,17 +15,23 @@ const PriceCard: React.FC<Product> = (props) => {
   const stock = props.initial_quantity - props.sold_quantity;
   // const stock = props.initial_quantity - 73;
 
+  const reviewsQuantity = props.reviews.length;
+  const reviewsRating =
+    props.reviews.reduce(function (sum: number, review: Review) {
+      return sum + review.rating;
+    }, 0) / reviewsQuantity;
+
   return (
     <Stack borderRadius="lg" borderWidth={1} px={4} py={6} spacing={5}>
       <Stack id="heading">
         <Condition condition={props.condition} sold_quantity={props.sold_quantity} />
         <ProductTitle title={props.title} />
-        <Stars />
+        <Stars quantity={reviewsQuantity} rating={reviewsRating} />
       </Stack>
 
       <Stack id="price" lineHeight="normal" spacing={0}>
         <Text fontSize="4xl" fontWeight={200}>
-          {props.currency_id === "ARS" ? "$" : "USD"} {props.price}
+          {props.currency_id === "ARS" ? "$" : "U$D"} {props.price}
         </Text>
         <Text>en 12x ${Math.round((props.price * 1.7) / 12)}</Text>
         <Text color="secondary.400" fontSize="sm">

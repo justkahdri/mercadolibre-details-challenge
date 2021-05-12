@@ -2,18 +2,19 @@ import React from "react";
 import {HStack, Stack, StackDivider} from "@chakra-ui/react";
 
 import mock from "../mock";
-import {Product} from "../types";
+import {Product, Review} from "../types";
 import Previews from "../../app/components/Previews";
 import PriceCard from "../../app/components/PriceCard";
-import Features from "../../app/components/Features";
 import Description from "../../app/components/Description";
 import Comments from "../../app/components/Comments";
+import ProductReviews from "../../app/components/ProductReviews";
 
 interface Props {
   product: Product;
+  reviews: Review[];
 }
 
-const DetailsScreen: React.FC<Props> = ({product = mock.product}) => {
+const DetailsScreen: React.FC<Props> = ({product = mock.product, reviews = mock.reviews}) => {
   return (
     <div id="details-container">
       <HStack
@@ -32,10 +33,11 @@ const DetailsScreen: React.FC<Props> = ({product = mock.product}) => {
             {/* <Features features={product.attributes} /> */}
             <Description />
             <Comments />
+            <ProductReviews reviews={reviews} />
           </Stack>
         </Stack>
         <Stack flex={1}>
-          <PriceCard {...product} />
+          <PriceCard {...product} reviews={reviews} />
         </Stack>
       </HStack>
     </div>

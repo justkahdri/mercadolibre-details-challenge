@@ -1,4 +1,4 @@
-import {Product} from "./types";
+import {Product, Review} from "./types";
 
 export default {
   get product(): Product {
@@ -415,5 +415,18 @@ export default {
       catalog_listing: false,
       channels: ["marketplace"],
     };
+  },
+  get reviews(): Review[] {
+    return [
+      {
+        id: 1,
+        title: "Excelente",
+        content:
+          "Increíble. Tamaño, calidad, todo. No sabemos dónde meterlo de lo grande que es. 100% satisfecho.",
+        rating: 4,
+        upvotes: 4,
+        downvotes: 0,
+      },
+    ];
   },
 };
