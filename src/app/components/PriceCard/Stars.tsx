@@ -13,8 +13,8 @@ const Stars = ({rating, quantity}: StarsProps) => (
       {Array(5)
         .fill("")
         .map((_, i) =>
-          i < rating ? (
-            <Icon key={i} as={AiFillStar} color="blue.500" />
+          i + 1 < rating ? (
+            <Icon key={i} as={AiFillStar} color="secondary.500" />
           ) : (
             <Icon key={i} as={AiOutlineStar} color="gray.300" />
           ),

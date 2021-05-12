@@ -1,29 +1,23 @@
 import React from "react";
-import {Box, Text, Icon, HStack} from "@chakra-ui/react";
+import {Icon, Flex} from "@chakra-ui/react";
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
 
-type StarsProps = {
+type Props = {
   rating: number;
-  quantity: number;
 };
 
-const Stars = ({rating, quantity}: StarsProps) => (
-  <HStack>
-    <Box d="flex">
-      {Array(5)
-        .fill("")
-        .map((_, i) =>
-          i < rating ? (
-            <Icon key={i} as={AiFillStar} color="blue.500" />
-          ) : (
-            <Icon key={i} as={AiOutlineStar} color="gray.300" />
-          ),
-        )}{" "}
-    </Box>
-    <Text color="blackAlpha.700" fontSize="sm">
-      {quantity === 1 ? "1 Opinión" : `${quantity} opiniones`}
-    </Text>
-  </HStack>
+const Stars = ({rating}: Props) => (
+  <Flex>
+    {Array(5)
+      .fill("")
+      .map((_, i) =>
+        i + 1 < rating ? (
+          <Icon key={i} as={AiFillStar} color="secondary.500" height={7} width={7} />
+        ) : (
+          <Icon key={i} as={AiOutlineStar} color="gray.300" height={7} width={7} />
+        ),
+      )}{" "}
+  </Flex>
 );
 
 export default Stars;
