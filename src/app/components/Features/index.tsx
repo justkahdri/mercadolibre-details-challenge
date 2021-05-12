@@ -14,7 +14,7 @@ type FeaturesProps = {
 const Features = ({features}: FeaturesProps) => {
   return (
     <Stack spacing={8}>
-      <Heading as="h3" color="blackAlpha.800" fontWeight={400} size="lg">
+      <Heading as="h3" variant="thin_gray">
         Características principales
       </Heading>
       <Table variant="striped">

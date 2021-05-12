@@ -106,5 +106,14 @@ export default extendTheme({
         },
       },
     },
+    Heading: {
+      variants: {
+        thin_gray: {
+          color: "blackAlpha.800",
+          fontWeight: 400,
+          fontSize: "3xl",
+        },
+      },
+    },
   },
 });
