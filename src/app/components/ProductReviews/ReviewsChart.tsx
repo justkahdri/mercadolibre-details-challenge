@@ -4,7 +4,7 @@ import {HStack, Stack} from "@chakra-ui/react";
 import type {Review} from "../../../product/types";
 
 import AverageFromReviews from "./AverageFromReviews";
-import ReviewsAmount from "./ReviewsAmount";
+import AmountBar from "./AmountBar";
 
 type ReviewsChartProps = {
   reviews: Review[];
@@ -16,26 +16,28 @@ const ReviewsChart = ({reviews}: ReviewsChartProps) => {
     reviews.reduce(function (sum: number, review: Review) {
       return sum + review.rating;
     }, 0) / reviewsQuantity;
-  const sorted = (value: number) => {
+  const filterQuantity = (value: number) => {
     let filtered = reviews.filter((review) => review.rating === value);
 
+    // TODO Optimize this
     return filtered.length;
   };
 
   return (
-    <HStack alignItems="center" spacing={16}>
+    <HStack alignItems="center">
       <AverageFromReviews quantity={reviewsQuantity} rating={reviewsRating} />
-      <Stack spacing={0}>
+      <Stack spacing={1}>
         {Array(5)
           .fill("")
           .map((_, i) => (
-            <ReviewsAmount
+            <AmountBar
               key={i}
               label={i === 0 ? `1 estrella` : `${i + 1} estrellas`}
-              percentage={(sorted(i + 1) / reviewsQuantity) * 100}
-              quantity={sorted(i + 1)}
+              percentage={(filterQuantity(i + 1) / reviewsQuantity) * 100}
+              quantity={filterQuantity(i + 1)}
             />
-          ))}
+          ))
+          .reverse()}
       </Stack>
     </HStack>
   );

@@ -4,6 +4,8 @@
 		"source.fixAll.eslint": true
 	},
 	"cSpell.words": [
-		"unstyled"
+		"downvotes",
+		"unstyled",
+		"upvotes"
 	]
 }
