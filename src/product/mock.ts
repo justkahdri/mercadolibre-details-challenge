@@ -439,7 +439,7 @@ export default {
         id: 3,
         title: "Excelente",
         content: "Divino !!! quedo conforme la quinciañera con su regalo.",
-        rating: 5,
+        rating: 4,
         upvotes: 4,
         downvotes: 0,
       },
@@ -462,7 +462,7 @@ export default {
       {
         id: 6,
         title: "Duro poco",
-        content: "Lo agarro el perro y lo destrozo",
+        content: "Lo agarró el perro y lo destrozó",
         rating: 2,
         upvotes: 0,
         downvotes: 2,

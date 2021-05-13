@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {HStack, Icon, Stack, Text} from "@chakra-ui/react";
-import {FaRegThumbsUp, FaRegThumbsDown, FaThumbsUp, FaThumbsDown} from "react-icons/fa";
+import {RiThumbUpLine, RiThumbUpFill, RiThumbDownLine, RiThumbDownFill} from "react-icons/ri";
 
 import {Review} from "../../../product/types";
 
@@ -34,7 +34,7 @@ const ReviewItem = ({title, rating, content, upvotes, downvotes}: Review) => {
       <HStack pt={2} spacing={5}>
         <HStack>
           <Icon
-            as={liked ? FaThumbsUp : FaRegThumbsUp}
+            as={liked ? RiThumbUpFill : RiThumbUpLine}
             color={liked ? "secondary.500" : "inherit"}
             onClick={() => handleVote(true)}
           />
@@ -42,7 +42,7 @@ const ReviewItem = ({title, rating, content, upvotes, downvotes}: Review) => {
         </HStack>
         <HStack>
           <Icon
-            as={disliked ? FaThumbsDown : FaRegThumbsDown}
+            as={disliked ? RiThumbDownFill : RiThumbDownLine}
             color={disliked ? "secondary.500" : "inherit"}
             onClick={() => handleVote(false)}
           />

@@ -11,7 +11,7 @@ type Props = {
 const AverageFromReviews = ({rating, quantity}: Props) => (
   <Stack alignItems="flex-end" spacing={0} textAlign="right">
     <Heading as="h5" color="blackAlpha.800" fontSize="6xl" fontWeight={300}>
-      {rating}
+      {rating.toFixed(1)}
     </Heading>
     <Stars rating={rating} size={7} />
     <Text color="blackAlpha.600" fontSize="sm" lineHeight="200%">
