@@ -16,6 +16,7 @@ const Thumbnail = ({handleClick, picture, active}: ThumbnailProps) => (
     colorScheme="secondary"
     height="50px"
     p={0.5}
+    title={active === picture.id ? "Selected thumbnail" : `Thumbnail ${picture.id}`}
     variant={active === picture.id ? "minimal" : "unstyled"}
     width="50px"
     onClick={() => handleClick(picture)}

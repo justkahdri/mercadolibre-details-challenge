@@ -1,5 +1,6 @@
-import {HStack, Text, StackProps} from "@chakra-ui/layout";
 import React from "react";
+import {HStack, Text, StackProps, Icon} from "@chakra-ui/react";
+import {MdKeyboardArrowDown} from "react-icons/md";
 
 const NavBar = (props: StackProps) => (
   <HStack
@@ -11,7 +12,9 @@ const NavBar = (props: StackProps) => (
     spacing={4}
     {...props}
   >
-    <Text>Categorias</Text>
+    <Text>
+      Categorias <Icon as={MdKeyboardArrowDown} />
+    </Text>
     <Text>Ofertas</Text>
     <Text>Historial</Text>
     <Text>Supermercado</Text>

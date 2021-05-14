@@ -1,19 +1,16 @@
 import React from "react";
-import {Text, Icon, Stack, HStack, Button, Select} from "@chakra-ui/react";
-import {FaShippingFast} from "react-icons/fa";
-import {IoReturnDownBackOutline} from "react-icons/io5";
-import {HiOutlineShieldCheck} from "react-icons/hi";
-import {BiTrophy} from "react-icons/bi";
+import {Text, Stack, Button} from "@chakra-ui/react";
 
 import {Product, Review} from "../../../product/types";
 
 import ProductTitle from "./ProductTitle";
-import Condition from "./Condition";
-import Stars from "./Stars";
+import Shipping from "./Shipping";
+import Refund from "./Refund";
+import StockSelect from "./StockSelect";
+import Badges from "./Badges";
 
 const PriceCard: React.FC<Product> = (props) => {
   const stock = props.initial_quantity - props.sold_quantity;
-  // const stock = props.initial_quantity - 73;
 
   const reviewsQuantity = props.reviews.length;
   const reviewsRating =
@@ -23,11 +20,13 @@ const PriceCard: React.FC<Product> = (props) => {
 
   return (
     <Stack borderRadius="lg" borderWidth={1} px={4} py={6} spacing={5}>
-      <Stack id="heading">
-        <Condition condition={props.condition} sold_quantity={props.sold_quantity} />
-        <ProductTitle title={props.title} />
-        <Stars quantity={reviewsQuantity} rating={reviewsRating} />
-      </Stack>
+      <ProductTitle
+        condition={props.condition}
+        reviews_quantity={reviewsQuantity}
+        reviews_rating={reviewsRating}
+        sold_quantity={props.sold_quantity}
+        title={props.title}
+      />
 
       <Stack id="price" lineHeight="normal" spacing={0}>
         <Text fontSize="4xl" fontWeight={200}>
@@ -39,64 +38,11 @@ const PriceCard: React.FC<Product> = (props) => {
         </Text>
       </Stack>
 
-      {props.shipping.free_shipping ? (
-        <Stack color="blackAlpha.600" fontSize="sm" id="shipping" lineHeight="100%">
-          <HStack alignItems="center">
-            <Icon as={FaShippingFast} color="green.400" height={5} width={5} />
-            <Text color="green.400" fontSize="md">
-              Llega gratis{" "}
-              <Text as="span" fontWeight={500}>
-                {new Date().getHours() < 13 ? "hoy" : "mañana"}
-              </Text>
-            </Text>
-          </HStack>
+      {props.shipping.free_shipping ? <Shipping /> : <Text color="blackAlpha.600">Envío pago</Text>}
 
-          <Text pl="28px">Solo en CABA y zonas de GBA</Text>
-          <Text pl="28px">Beneficio Mercado Puntos</Text>
-          <Text color="secondary.400" pl="28px">
-            Ver más formas de entrega
-          </Text>
-        </Stack>
-      ) : (
-        <Text color="blackAlpha.600">Envío pago</Text>
-      )}
+      <Refund />
 
-      <Stack color="blackAlpha.600" fontSize="sm" id="refund" lineHeight="100%">
-        <HStack alignItems="center">
-          <Icon as={IoReturnDownBackOutline} color="green.400" height={6} width={5} />
-          <Text color="green.400" fontSize="md">
-            Devolución Gratis
-          </Text>
-        </HStack>
-
-        <Text pl="28px">Tenés 30 días desde que lo recibís.</Text>
-        <Text color="secondary.400" pl="28px">
-          Conocer más
-        </Text>
-      </Stack>
-
-      <Stack lineHeight="100%" pt={5}>
-        {stock < 5 ? (
-          <Text fontSize="lg" fontWeight={500} id="stock">
-            {stock == 1 ? "¡Última disponible!" : `¡Últimos ${stock} disponibles!`}{" "}
-          </Text>
-        ) : (
-          <Text fontWeight={500}>Stock disponible</Text>
-        )}
-        <HStack>
-          <Text>Cantidad:</Text>
-          <Select defaultValue={1} fontWeight={500} variant="unstyled" width="auto">
-            {Array(stock)
-              .fill("")
-              .map((_, i) => (
-                <option key={i} value={i + 1}>{`${i + 1} ${i ? "unidades" : "unidad"}`}</option>
-              ))}
-          </Select>
-          <Text as="span" color="blackAlpha.600" fontSize="sm">
-            ({stock} disponibles)
-          </Text>
-        </HStack>
-      </Stack>
+      <StockSelect stock={stock} />
 
       <Stack id="CTA">
         <Button colorScheme="secondary" size="lg" variant="solid">
@@ -107,32 +53,7 @@ const PriceCard: React.FC<Product> = (props) => {
         </Button>
       </Stack>
 
-      <Stack
-        alignItems="flex-start"
-        color="blackAlpha.600"
-        fontSize="sm"
-        id="badges"
-        lineHeight="120%"
-      >
-        <HStack alignItems="flex-start">
-          <Icon as={HiOutlineShieldCheck} height={4} width={4} />
-          <Text>
-            <Text as="span" color="secondary.400">
-              Compra Protegida
-            </Text>
-            , recibí el producto que esperabas o te devolvemos tu dinero.
-          </Text>
-        </HStack>
-        <HStack alignItems="flex-start">
-          <Icon as={BiTrophy} height={4} width={4} />
-          <Text>
-            <Text as="span" color="secondary.400">
-              Mercado Puntos
-            </Text>
-            . Sumás 139 puntos.
-          </Text>
-        </HStack>
-      </Stack>
+      <Badges />
     </Stack>
   );
 };
