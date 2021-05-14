@@ -3,6 +3,7 @@ import {Heading, Stack} from "@chakra-ui/react";
 
 import AskInput from "./AskInput";
 import QuestionBox from "./QuestionBox";
+import FAQ from "./FAQ";
 
 const initialState = [
   {question: "Como se llama la tienda ??"},
@@ -41,6 +42,8 @@ const Comments = () => {
       <Heading as="h3" variant="thin_gray">
         Preguntas y respuestas
       </Heading>
+
+      <FAQ />
 
       <AskInput handleClick={addQuestion} />
 

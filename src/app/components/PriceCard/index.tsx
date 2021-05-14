@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, Icon, Stack, HStack, Button} from "@chakra-ui/react";
+import {Text, Icon, Stack, HStack, Button, Select} from "@chakra-ui/react";
 import {FaShippingFast} from "react-icons/fa";
 import {IoReturnDownBackOutline} from "react-icons/io5";
 import {HiOutlineShieldCheck} from "react-icons/hi";
@@ -75,11 +75,28 @@ const PriceCard: React.FC<Product> = (props) => {
         </Text>
       </Stack>
 
-      {stock < 5 && (
-        <Text fontSize="lg" fontWeight={500} id="stock">
-          {stock == 1 ? "¡Última disponible!" : `¡Últimos ${stock} disponibles!`}{" "}
-        </Text>
-      )}
+      <Stack lineHeight="100%" pt={5}>
+        {stock < 5 ? (
+          <Text fontSize="lg" fontWeight={500} id="stock">
+            {stock == 1 ? "¡Última disponible!" : `¡Últimos ${stock} disponibles!`}{" "}
+          </Text>
+        ) : (
+          <Text fontWeight={500}>Stock disponible</Text>
+        )}
+        <HStack>
+          <Text>Cantidad:</Text>
+          <Select defaultValue={1} fontWeight={500} variant="unstyled" width="auto">
+            {Array(stock)
+              .fill("")
+              .map((_, i) => (
+                <option key={i} value={i + 1}>{`${i + 1} ${i ? "unidades" : "unidad"}`}</option>
+              ))}
+          </Select>
+          <Text as="span" color="blackAlpha.600" fontSize="sm">
+            ({stock} disponibles)
+          </Text>
+        </HStack>
+      </Stack>
 
       <Stack id="CTA">
         <Button colorScheme="secondary" size="lg" variant="solid">
