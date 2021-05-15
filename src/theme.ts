@@ -1,10 +1,11 @@
 import {extendTheme, theme} from "@chakra-ui/react";
+import {isFirefox} from "react-device-detect";
 
 export default extendTheme({
   styles: {
     global: {
       body: {
-        color: "blackAlpha.900",
+        color: isFirefox ? "blackAlpha.800" : "blackAlpha.900",
       },
     },
   },
@@ -62,6 +63,9 @@ export default extendTheme({
       },
     },
     Button: {
+      baseStyle: {
+        fontWeight: 500,
+      },
       sizes: {
         lg: {
           fontSize: "md",
@@ -75,7 +79,7 @@ export default extendTheme({
           },
         }),
         minimal: ({colorScheme = "blue"}) => ({
-          outlineStyle: `solid`,
+          outlineStyle: isFirefox ? "solid" : "auto",
           outlineColor: `${colorScheme}.500`,
           ":focus": {
             boxShadow: "none",
@@ -107,6 +111,9 @@ export default extendTheme({
       },
     },
     Heading: {
+      baseStyle: {
+        fontWeight: 500,
+      },
       variants: {
         thin_gray: {
           color: "blackAlpha.800",
