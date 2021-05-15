@@ -75,7 +75,7 @@ export default extendTheme({
           },
         }),
         minimal: ({colorScheme = "blue"}) => ({
-          outlineStyle: `auto`,
+          outlineStyle: `solid`,
           outlineColor: `${colorScheme}.500`,
           ":focus": {
             boxShadow: "none",
