@@ -8,6 +8,11 @@ import PriceCard from "../../app/components/PriceCard";
 import Description from "../../app/components/Description";
 import Comments from "../../app/components/Comments";
 import ProductReviews from "../../app/components/ProductReviews";
+import {
+  Categories as CategoriesLinks,
+  ProjectID,
+  Related as RelatedLinks,
+} from "../../app/components/Links";
 
 interface Props {
   product: Product;
@@ -17,6 +22,10 @@ interface Props {
 const DetailsScreen: React.FC<Props> = ({product = mock.product, reviews = mock.reviews}) => {
   return (
     <div id="details-container">
+      <Stack py={2} spacing={4}>
+        <RelatedLinks />
+        <CategoriesLinks />
+      </Stack>
       <HStack
         alignItems="flex-start"
         bgColor="white"
@@ -40,6 +49,7 @@ const DetailsScreen: React.FC<Props> = ({product = mock.product, reviews = mock.
           <PriceCard {...product} reviews={reviews} />
         </Stack>
       </HStack>
+      <ProjectID projectId={product.id} py={4} />
     </div>
   );
 };

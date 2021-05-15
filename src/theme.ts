@@ -44,9 +44,16 @@ export default extendTheme({
     Link: {
       variants: {
         unstyled: ({colorScheme = "blackAlpha"}) => ({
-          color: `${colorScheme}.700`,
+          color: `${colorScheme}.800`,
           _hover: {
-            color: `${colorScheme}.800`,
+            color: `${colorScheme}.900`,
+            textDecoration: "none",
+          },
+        }),
+        hover_color: ({colorScheme = "secondary"}) => ({
+          color: `blackAlpha.800`,
+          _hover: {
+            color: `${colorScheme}.700`,
             textDecoration: "none",
           },
         }),
