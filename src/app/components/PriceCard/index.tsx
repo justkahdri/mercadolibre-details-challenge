@@ -30,7 +30,7 @@ const PriceCard: React.FC<Product> = (props) => {
 
       <Stack id="price" lineHeight="normal" spacing={0}>
         <Text fontSize="4xl" fontWeight={200}>
-          {props.currency_id === "ARS" ? "$" : "U$D"} {props.price}
+          {props.currency_id === "ARS" ? "$" : "U$D"} {props.price.toLocaleString("es-AR")}
         </Text>
         <Text>en 12x ${Math.round((props.price * 1.7) / 12)}</Text>
         <Text color="secondary.400" fontSize="sm">
