@@ -5,7 +5,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "theme": "chakra-cli tokens ./src/theme.ts"
+    "theme": "chakra-cli tokens ./src/theme.ts",
+    "pre-deploy": "netlify deploy",
+    "deploy": "netlify deploy --prod"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.5.2",
