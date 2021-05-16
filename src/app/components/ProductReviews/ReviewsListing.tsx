@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Button, HStack, Link, Stack, StackDivider} from "@chakra-ui/react";
+import React, {useEffect, useState, useCallback} from "react";
+import {Button, HStack, Link, Stack} from "@chakra-ui/react";
 
 import {Review} from "../../../product/types";
 
@@ -12,22 +12,29 @@ type Props = {
 const ReviewsListing = ({reviews}: Props) => {
   const [filteredReviews, setFilteredReviews] = useState(reviews);
 
-  const filterReviews = (filter?: string) => {
-    let filteredReviews = reviews;
+  const filterReviews = useCallback(
+    (filter?: string) => {
+      let filteredReviews = reviews;
 
-    switch (filter) {
-      case "positive": {
-        filteredReviews = reviews.filter((review) => review.rating > 3);
-        break;
+      switch (filter) {
+        case "positive": {
+          filteredReviews = reviews.filter((review) => review.rating > 3);
+          break;
+        }
+        case "negative": {
+          filteredReviews = reviews.filter((review) => review.rating < 3);
+          break;
+        }
       }
-      case "negative": {
-        filteredReviews = reviews.filter((review) => review.rating < 3);
-        break;
-      }
-    }
 
-    setFilteredReviews(filteredReviews.slice(0, 5));
-  };
+      setFilteredReviews(filteredReviews.slice(0, 5));
+    },
+    [reviews],
+  );
+
+  useEffect(() => {
+    filterReviews();
+  }, [filterReviews]);
 
   return (
     <Stack spacing={8}>

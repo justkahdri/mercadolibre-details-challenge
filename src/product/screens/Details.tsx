@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {HStack, Stack, StackDivider} from "@chakra-ui/react";
 
 import mock from "../mock";
@@ -21,6 +21,14 @@ interface Props {
 }
 
 const DetailsScreen: React.FC<Props> = ({product = mock.product, reviews = mock.reviews}) => {
+  useEffect(() => {
+    document.title = `${product.title} | Mercado Libre`;
+
+    return () => {
+      document.title = "Mercado Libre";
+    };
+  }, [product.title]);
+
   return (
     <div id="details-container">
       <Stack py={2} spacing={4}>
@@ -46,7 +54,7 @@ const DetailsScreen: React.FC<Props> = ({product = mock.product, reviews = mock.
             <ProductReviews reviews={reviews} />
           </Stack>
         </Stack>
-        <Stack flex={1}>
+        <Stack flex={0.9}>
           <PriceCard {...product} reviews={reviews} />
           <InfoCard address={product.seller_address} />
         </Stack>
