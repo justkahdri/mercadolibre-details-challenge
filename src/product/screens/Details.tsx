@@ -13,6 +13,7 @@ import {
   ProjectID,
   Related as RelatedLinks,
 } from "../../app/components/Links";
+import InfoCard from "../../app/components/InfoCard";
 
 interface Props {
   product: Product;
@@ -47,6 +48,7 @@ const DetailsScreen: React.FC<Props> = ({product = mock.product, reviews = mock.
         </Stack>
         <Stack flex={1}>
           <PriceCard {...product} reviews={reviews} />
+          <InfoCard address={product.seller_address} />
         </Stack>
       </HStack>
       <ProjectID projectId={product.id} py={4} />
