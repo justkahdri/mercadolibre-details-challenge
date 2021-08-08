@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Stack, HStack, Box, Image} from "@chakra-ui/react";
+import {Container, Stack, HStack, Box, Image, Tooltip} from "@chakra-ui/react";
 
 import logo from "../../../assets/logo.png";
 
@@ -15,7 +15,9 @@ const Header = () => (
       <Stack spacing={3}>
         <HStack justifyContent="space-between">
           <HStack flex={1} spacing={12}>
-            <Image objectFit="contain" src={logo} />
+            <Tooltip hasArrow bg="secondary.500" label="No es el verdadero MercadoLibre">
+              <Image objectFit="contain" src={logo} />
+            </Tooltip>
             <Search />
           </HStack>
           <Point display={{base: "none", lg: "flex"}} />
