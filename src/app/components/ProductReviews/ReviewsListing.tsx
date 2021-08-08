@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useCallback} from "react";
-import {Button, HStack, Link, Stack} from "@chakra-ui/react";
+import {Text, Link, Stack, TabList, Tabs, Tab, Icon, Flex} from "@chakra-ui/react";
+import {WiStars} from "react-icons/wi";
 
 import {Review} from "../../../product/types";
 
@@ -27,7 +28,7 @@ const ReviewsListing = ({reviews}: Props) => {
         }
       }
 
-      setFilteredReviews(filteredReviews.slice(0, 5));
+      setFilteredReviews(filteredReviews.slice(0, 3));
     },
     [reviews],
   );
@@ -37,32 +38,34 @@ const ReviewsListing = ({reviews}: Props) => {
   }, [filterReviews]);
 
   return (
-    <Stack spacing={8}>
-      <HStack>
-        <Button colorScheme="secondary" flex={1} variant="ghost" onClick={() => filterReviews()}>
-          Todas
-        </Button>
-        <Button
-          colorScheme="secondary"
-          flex={1}
-          variant="ghost"
-          onClick={() => filterReviews("positive")}
-        >
-          Positivas
-        </Button>
-        <Button
-          colorScheme="secondary"
-          flex={1}
-          variant="ghost"
-          onClick={() => filterReviews("negative")}
-        >
-          Negativas
-        </Button>
-      </HStack>
+    <Stack minHeight="523px" spacing={8}>
+      <Tabs isFitted colorScheme="secondary">
+        <TabList mb="1em">
+          <Tab fontWeight={500} onFocus={() => filterReviews()}>
+            Todas
+          </Tab>
+          <Tab fontWeight={500} onFocus={() => filterReviews("positive")}>
+            Positivas
+          </Tab>
+          <Tab fontWeight={500} onFocus={() => filterReviews("negative")}>
+            Negativas
+          </Tab>
+        </TabList>
+      </Tabs>
 
-      {filteredReviews.map((review) => (
-        <ReviewItem key={review.id} {...review} />
-      ))}
+      {filteredReviews.length ? (
+        filteredReviews.map((review) => <ReviewItem key={review.id} {...review} />)
+      ) : (
+        <Stack alignItems="center">
+          <Flex alignItems="center" color="gray.300">
+            <Icon as={WiStars} boxSize="50px" />
+            <Text fontSize="40px">😶</Text>
+            <Icon as={WiStars} boxSize="50px" />
+          </Flex>
+          <Text fontSize="lg">¡Nada por aquí!</Text>
+          <Text color="blackAlpha.600">Este producto no tiene opiniones.</Text>
+        </Stack>
+      )}
       {filteredReviews.length !== reviews.length && (
         <Link color="secondary.500" fontSize="sm">
           Ver todas las opiniones
