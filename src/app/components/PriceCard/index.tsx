@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, Stack, Button} from "@chakra-ui/react";
+import {Text, Stack, Button, Tooltip} from "@chakra-ui/react";
 
 import {Product, Review} from "../../../product/types";
 
@@ -45,12 +45,16 @@ const PriceCard: React.FC<Product> = (props) => {
       <StockSelect stock={stock} />
 
       <Stack id="CTA">
-        <Button colorScheme="secondary" size="lg" variant="solid">
-          {props.buying_mode == "buy_it_now" ? "Comprar ahora" : "Comprar"}
-        </Button>
-        <Button colorScheme="secondary" size="lg" variant="ghost">
-          Agregar al carrito
-        </Button>
+        <Tooltip hasArrow bg="red.500" closeOnClick={false} label="No es un bot&oacute;n real">
+          <Button colorScheme="secondary" size="lg" variant="solid">
+            {props.buying_mode == "buy_it_now" ? "Comprar ahora" : "Comprar"}
+          </Button>
+        </Tooltip>
+        <Tooltip hasArrow bg="red.500" closeOnClick={false} label="Este tampoco">
+          <Button colorScheme="secondary" size="lg" variant="ghost">
+            Agregar al carrito
+          </Button>
+        </Tooltip>
       </Stack>
 
       <Badges />
