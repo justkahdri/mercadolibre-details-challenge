@@ -3,6 +3,10 @@
 # MercadoLibre challenge
 Debemos crear un clon de [la página de detalle de producto](https://articulo.mercadolibre.com.ar/MLA-741093357-peluche-stitch-angel-lilo-1-metro-100cm-reales-gigante-_JM#position=5&search_layout=stack&type=item&tracking_id=839ad6c1-5098-41e7-914b-75a960f45a3b) de Mercado Libre.
 
+# Capturas del proyecto terminado
+![frontpage](https://user-images.githubusercontent.com/48418633/142301155-716cfcd1-b2a0-490b-bcfc-c1e9196980f2.png)
+![footer](https://user-images.githubusercontent.com/48418633/142301161-7f404cf8-07a8-437c-858c-ad17740a5152.png)
+
 # API
 Podés encontrar los mocks necesarios para empezar a trabajar en `./src/product/mocks` con sus respectivos types. Sin embargo, algunos de los campos necesarios para completar la pantalla no están ahí, queda en vos agregarlos!
 
@@ -31,3 +35,4 @@ El resto de los elementos son opcionales pero altamente recomendados.
 ---
 
 No te quedes acá, el repositorio ya tiene el router configurado para agregar la pantalla de inicio, agregá todas las pantallas que quieras!
+![MELI-preview](https://user-images.githubusercontent.com/48418633/142301189-b5e0c952-0d92-4811-8d48-2cce770fafbb.gif)
