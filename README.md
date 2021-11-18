@@ -35,4 +35,5 @@ El resto de los elementos son opcionales pero altamente recomendados.
 ---
 
 No te quedes acá, el repositorio ya tiene el router configurado para agregar la pantalla de inicio, agregá todas las pantallas que quieras!
+
 ![MELI-preview](https://user-images.githubusercontent.com/48418633/142301189-b5e0c952-0d92-4811-8d48-2cce770fafbb.gif)
